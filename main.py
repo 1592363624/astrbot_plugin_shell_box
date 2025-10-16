@@ -1,10 +1,15 @@
+import textwrap
 from datetime import datetime
 from io import BytesIO
-import textwrap
 from typing import Optional
+
+import aiohttp
 from PIL import Image
 from aiocqhttp import CQHttp
-import aiohttp
+
+import astrbot.api.message_components as Comp
+from astrbot import logger
+from astrbot.api.event import filter
 from astrbot.api.star import Context, Star, register
 from astrbot.core.config.astrbot_config import AstrBotConfig
 from astrbot.core.platform.sources.aiocqhttp.aiocqhttp_message_event import (
@@ -12,17 +17,14 @@ from astrbot.core.platform.sources.aiocqhttp.aiocqhttp_message_event import (
 )
 from astrbot.core.star.filter.platform_adapter_type import PlatformAdapterType
 from .draw import create_image
-import astrbot.api.message_components as Comp
-from astrbot import logger
-from astrbot.api.event import filter
 
 
 @register(
-    "astrbot_plugin_box",
-    "Zhalslar",
+    "astrbot_plugin_shell_box",
+    "Shell",
     "开盒插件",
-    "1.1.7",
-    "https://github.com/Zhalslar/astrbot_plugin_box",
+    "1.0.0",
+    "https://github.com/1592363624/astrbot_plugin_shell_box",
 )
 class Box(Star):
     def __init__(self, context: Context, config: AstrBotConfig):
